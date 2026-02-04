@@ -38,6 +38,7 @@
             position: relative;
         }
 
+        /* Dreamy gradient background */
         .bg-gradient {
             position: fixed;
             top: 0;
@@ -58,6 +59,7 @@
             50% { opacity: 0.85; }
         }
 
+        /* Starfield effect */
         .stars {
             position: fixed;
             top: 0;
@@ -83,6 +85,7 @@
             50% { opacity: var(--max-opacity); transform: scale(1); }
         }
 
+        /* Floating particles container */
         .particle-container {
             position: fixed;
             top: 0;
@@ -119,6 +122,7 @@
             }
         }
 
+        /* Rose petals */
         .petal {
             position: absolute;
             width: 15px;
@@ -148,6 +152,7 @@
             }
         }
 
+        /* Glowing orbs */
         .orb {
             position: fixed;
             border-radius: 50%;
@@ -191,6 +196,7 @@
             75% { transform: translate(-30px, -10px) scale(1.05); }
         }
 
+        /* Main container */
         .container {
             position: relative;
             z-index: 10;
@@ -243,6 +249,7 @@
                 transparent 100%);
         }
 
+        /* Decorative corner flourishes */
         .flourish {
             position: absolute;
             width: 60px;
@@ -262,6 +269,7 @@
             fill: var(--rose-deep);
         }
 
+        /* Stage styling */
         .stage {
             display: none;
             animation: stageReveal 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -282,6 +290,7 @@
             }
         }
 
+        /* Typography */
         h1 {
             font-family: 'Playfair Display', serif;
             color: var(--rose-deep);
@@ -325,6 +334,7 @@
             font-style: italic;
         }
 
+        /* Buttons */
         .btn {
             font-family: 'Cormorant Garamond', serif;
             padding: 16px 45px;
@@ -392,6 +402,7 @@
             box-shadow: 0 10px 30px rgba(201, 169, 98, 0.4);
         }
 
+        /* Choice cards */
         .choice-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -452,6 +463,7 @@
             font-weight: 600;
         }
 
+        /* Quiz options */
         .quiz-option {
             font-family: 'Cormorant Garamond', serif;
             background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(247, 231, 206, 0.8));
@@ -474,6 +486,7 @@
             box-shadow: 0 8px 25px rgba(139, 41, 66, 0.3);
         }
 
+        /* Custom Modal */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -564,6 +577,7 @@
             box-shadow: 0 10px 30px rgba(139, 41, 66, 0.45);
         }
 
+        /* Heart explosion effects */
         .heart-explosion {
             position: fixed;
             font-size: 28px;
@@ -584,6 +598,7 @@
             }
         }
 
+        /* Celebration stage special styling */
         #celebration h1 {
             font-size: 2.6em;
             animation: celebrationPulse 2s ease-in-out infinite;
@@ -630,6 +645,7 @@
             }
         }
 
+        /* Love letter buttons */
         .letter-buttons {
             display: flex;
             gap: 15px;
@@ -675,6 +691,17 @@
                 0 0 60px rgba(139, 41, 66, 0.5);
         }
 
+        .email-btn {
+            background: linear-gradient(135deg, var(--rose-deep) 0%, var(--burgundy) 100%);
+            color: var(--cream);
+            border: 2px solid var(--gold-warm);
+        }
+
+        .email-btn:hover {
+            background: linear-gradient(135deg, var(--burgundy) 0%, var(--rose-deep) 100%);
+        }
+
+        /* Email status indicator */
         .email-status {
             margin-top: 20px;
             padding: 12px 20px;
@@ -701,6 +728,7 @@
             color: #f44336;
         }
 
+        /* Sparkle effect for celebration */
         .sparkle {
             position: fixed;
             pointer-events: none;
@@ -719,6 +747,7 @@
             100% { opacity: 0; transform: scale(0.5) rotate(360deg); }
         }
 
+        /* Music control */
         .music-control {
             position: fixed;
             bottom: 25px;
@@ -757,19 +786,242 @@
             50% { box-shadow: 0 8px 35px rgba(139, 41, 66, 0.6), 0 0 35px rgba(201, 169, 98, 0.4); }
         }
 
-        @media (max-width: 600px) {
-            .container { padding: 40px 25px; }
-            h1 { font-size: 1.9em; }
-            p { font-size: 1.1em; }
-            .btn { padding: 14px 35px; font-size: 1.1em; margin: 8px 5px; }
-            .choice-grid { gap: 12px; }
-            .choice-card { padding: 22px 12px; }
-            .choice-card .emoji { font-size: 2.2em; }
-            .flourish { width: 40px; height: 40px; }
-            .love-letter-btn { padding: 16px 30px; font-size: 1.1em; }
-            .letter-buttons { flex-direction: column; }
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 35px 20px;
+                max-width: 95%;
+                width: 95%;
+                margin: 10px auto;
+            }
+
+            h1 {
+                font-size: 1.6em;
+                margin-bottom: 20px;
+            }
+
+            h1 .script {
+                font-size: 0.7em;
+                margin-top: 5px;
+            }
+
+            p {
+                font-size: 1.05em;
+                margin-bottom: 15px;
+            }
+
+            .highlight-text {
+                font-size: 1.3em !important;
+            }
+
+            .btn {
+                padding: 12px 30px;
+                font-size: 1em;
+                margin: 8px 4px;
+                width: auto;
+            }
+
+            .choice-grid {
+                gap: 10px;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .choice-card {
+                padding: 20px 10px;
+            }
+
+            .choice-card .emoji {
+                font-size: 2em;
+                margin-bottom: 8px;
+            }
+
+            .choice-card span:last-child {
+                font-size: 0.95em;
+            }
+
+            .quiz-option {
+                padding: 14px 18px;
+                font-size: 1em;
+                margin: 10px 0;
+            }
+
+            .flourish {
+                width: 35px;
+                height: 35px;
+            }
+
+            .flourish-tl { top: 10px; left: 10px; }
+            .flourish-tr { top: 10px; right: 10px; }
+            .flourish-bl { bottom: 10px; left: 10px; }
+            .flourish-br { bottom: 10px; right: 10px; }
+
+            .love-letter-btn {
+                padding: 14px 25px;
+                font-size: 1em;
+                width: 100%;
+            }
+
+            .letter-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .modal-content {
+                max-width: 90%;
+                padding: 35px 25px;
+            }
+
+            .modal-content h2 {
+                font-size: 1.5em;
+            }
+
+            .modal-content p {
+                font-size: 1em;
+            }
+
+            .music-control {
+                width: 50px;
+                height: 50px;
+                font-size: 18px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            #celebration h1 {
+                font-size: 2em;
+            }
+
+            .celebration-hearts {
+                font-size: 3em;
+                margin: 20px 0;
+            }
+
+            .final-message {
+                font-size: 1.4em;
+                margin-top: 20px;
+            }
+
+            .email-status {
+                font-size: 0.9em;
+                padding: 10px 15px;
+            }
+
+            /* Prevent horizontal scroll */
+            .orb-1, .orb-2, .orb-3 {
+                display: none;
+            }
+
+            /* Reduce particles on mobile for performance */
+            .particle:nth-child(n+8),
+            .petal:nth-child(n+6) {
+                display: none;
+            }
         }
 
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 15px;
+            }
+
+            h1 {
+                font-size: 1.4em;
+            }
+
+            p {
+                font-size: 0.95em;
+            }
+
+            .highlight-text {
+                font-size: 1.2em !important;
+            }
+
+            .btn {
+                padding: 10px 25px;
+                font-size: 0.95em;
+                margin: 6px 3px;
+            }
+
+            .choice-grid {
+                gap: 8px;
+            }
+
+            .choice-card {
+                padding: 18px 8px;
+            }
+
+            .choice-card .emoji {
+                font-size: 1.8em;
+            }
+
+            .choice-card span:last-child {
+                font-size: 0.85em;
+            }
+
+            .quiz-option {
+                padding: 12px 15px;
+                font-size: 0.95em;
+            }
+
+            #celebration h1 {
+                font-size: 1.7em;
+            }
+
+            .celebration-hearts {
+                font-size: 2.5em;
+            }
+
+            .final-message {
+                font-size: 1.2em;
+            }
+
+            .modal-content {
+                padding: 30px 20px;
+            }
+
+            .modal-content::before {
+                font-size: 2.5em;
+                top: -20px;
+            }
+        }
+
+        /* Landscape mobile fix */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .container {
+                margin: 20px auto;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+
+            h1 {
+                font-size: 1.3em;
+                margin-bottom: 10px;
+            }
+
+            p {
+                font-size: 0.9em;
+                margin-bottom: 10px;
+            }
+
+            .btn {
+                padding: 8px 20px;
+                font-size: 0.9em;
+                margin: 5px 3px;
+            }
+
+            .choice-card {
+                padding: 15px 8px;
+            }
+
+            .choice-card .emoji {
+                font-size: 1.5em;
+            }
+        }
+
+        /* Loading animation */
         .page-loader {
             position: fixed;
             top: 0;
@@ -801,10 +1053,12 @@
     </style>
 </head>
 <body>
+    <!-- Page loader -->
     <div class="page-loader" id="pageLoader">
         <div class="loader-heart">💕</div>
     </div>
 
+    <!-- Background elements -->
     <div class="bg-gradient"></div>
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
@@ -812,6 +1066,7 @@
     <div class="stars" id="stars"></div>
     <div class="particle-container" id="particles"></div>
 
+    <!-- Custom Modal -->
     <div class="modal-overlay" id="customModal">
         <div class="modal-content">
             <h2 id="modalTitle">Caught You, Irene! 😘</h2>
@@ -820,11 +1075,13 @@
         </div>
     </div>
 
+    <!-- Music control -->
     <button class="music-control" id="musicControl" onclick="toggleMusic()" title="Play romantic music 🎵">
         ▶️
     </button>
 
     <div class="container">
+        <!-- Decorative flourishes -->
         <div class="flourish flourish-tl">
             <svg viewBox="0 0 100 100">
                 <path d="M10,90 Q10,10 90,10 Q70,10 50,30 Q30,50 30,70 Q30,90 10,90" fill="none" stroke="currentColor" stroke-width="2"/>
@@ -850,6 +1107,7 @@
             </svg>
         </div>
 
+        <!-- Stage 1: Initial Question -->
         <div class="stage active" id="stage1">
             <h1>My Dearest Irene<span class="script">I have something to ask you...</span></h1>
             <p>Every moment with you feels like magic, and even though we're miles apart, you're always close to my heart...</p>
@@ -858,6 +1116,7 @@
             <button class="btn btn-no" id="noBtn1" onclick="dodgeNo(this, 2)">Let me think...</button>
         </div>
 
+        <!-- Stage 2: The Persistence -->
         <div class="stage" id="stage2">
             <h1>Wait, Irene...<span class="script">Let me try once more</span></h1>
             <p>Perhaps I didn't ask properly. Let me pour my heart out across the distance between us...</p>
@@ -866,6 +1125,7 @@
             <button class="btn btn-no" id="noBtn2" onclick="dodgeNo(this, 3)">Hmm, still unsure...</button>
         </div>
 
+        <!-- Stage 3: Dream Date Selection -->
         <div class="stage" id="stage3">
             <h1>Perfect, Irene!<span class="script">Now, let's dream together...</span></h1>
             <p>When we're finally together, what does your ideal Valentine's Day look like?</p>
@@ -890,6 +1150,7 @@
             <p class="subtext">Spoiler: They all sound amazing with you, Irene... 🌹</p>
         </div>
 
+        <!-- Stage 4: Love Quiz -->
         <div class="stage" id="stage4">
             <h1>Almost There<span class="script">One little question...</span></h1>
             <p>Complete this sentence with your heart, Irene:</p>
@@ -900,6 +1161,7 @@
             <div class="quiz-option" onclick="showModal()">Nobody (just kidding!) 😜</div>
         </div>
 
+        <!-- Stage 5: The Promise -->
         <div class="stage" id="stage5">
             <h1>My Promise<span class="script">To you, Irene...</span></h1>
             <p>Even though we're separated by distance, I promise to fill this Valentine's Day with:</p>
@@ -914,6 +1176,7 @@
             <button class="btn btn-maybe" onclick="nextStage(6)">You've convinced me... ✨</button>
         </div>
 
+        <!-- Stage 6: Final Question -->
         <div class="stage" id="stage6">
             <h1>The Final Question<span class="script">With all my heart, Irene...</span></h1>
             <p>You've journeyed through my heart to get here...</p>
@@ -927,6 +1190,7 @@
             </p>
         </div>
 
+        <!-- Celebration Stage -->
         <div class="stage" id="celebration">
             <h1>🎉 My Heart is Full! 🎉<span class="script">You said yes, Irene!</span></h1>
             <p style="font-size: 1.4em; color: var(--rose-deep); font-weight: 600;">
@@ -943,8 +1207,10 @@
                 You + Me = A Love Story for the Ages 💑
             </div>
             
+            <!-- Email Status Indicator -->
             <div class="email-status" id="emailStatus"></div>
             
+            <!-- Love Letter Buttons -->
             <div class="letter-buttons">
                 <button class="love-letter-btn" onclick="openLoveLetter()">
                     💌 Read Your Love Letter 💌
@@ -953,6 +1219,7 @@
         </div>
     </div>
 
+    <!-- Audio -->
     <audio id="background-music" loop preload="auto">
         <source src="perfect.mp3" type="audio/mpeg">
     </audio>
@@ -960,52 +1227,70 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
+        // ╔════════════════════════════════════════════════════════════════════════╗
+        // ║                    ⚠️ CONFIGURATION - EDIT THESE! ⚠️                   ║
+        // ╚════════════════════════════════════════════════════════════════════════╝
+        
         const YOUR_NAME = 'Chris';
         const IRENE_EMAIL = 'christian.kusi@st.vvu.edu.gh';
+        
+        // EmailJS Credentials
         const EMAILJS_PUBLIC_KEY = 'Ue1HD9NA1njsNPm0K';
         const EMAILJS_SERVICE_ID = 'service_dsefyev';
         const EMAILJS_TEMPLATE_ID = 'template_k794xu9';
         
+        // ============ GLOBAL STATE ============
         let userChoice = 'unknown';
         let emailSent = false;
 
+        // ============ INITIALIZATION ============
         window.addEventListener('load', function() {
             createStars();
             createParticles();
             createPetals();
+            
+            // Initialize EmailJS
             emailjs.init(EMAILJS_PUBLIC_KEY);
-            console.log('EmailJS initialized');
+            console.log('✅ EmailJS initialized');
+            
             setTimeout(function() {
                 document.getElementById('pageLoader').classList.add('hidden');
             }, 1500);
         });
 
+        // ============ AUTO-SEND EMAIL FUNCTION ============
         async function sendLoveLetterEmail() {
             if (emailSent) return;
+            
             const statusEl = document.getElementById('emailStatus');
             statusEl.className = 'email-status sending';
-            statusEl.textContent = 'Sending a special love letter to your email...';
-            const letterContent = generateLoveLetterText();
+            statusEl.textContent = '📨 Sending a special love letter to your email...';
+            
+            const letterContent = generateLoveLetterHTML();
+            
             try {
                 await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
                     to_email: IRENE_EMAIL,
                     to_name: 'Irene',
                     from_name: YOUR_NAME,
-                    subject: "A Love Letter for You, Irene - Happy Valentine's Day!",
+                    subject: "💕 A Love Letter for You, Irene - Happy Valentine's Day!",
                     message: letterContent,
                     user_choice: userChoice
                 });
+                
                 emailSent = true;
                 statusEl.className = 'email-status success';
-                statusEl.textContent = 'A love letter has been sent to your email!';
-                console.log('Email sent successfully!');
+                statusEl.textContent = '✅ A love letter has been sent to your email! 💌';
+                console.log('✅ Email sent successfully!');
+                
             } catch (error) {
-                console.error('Email error:', error);
+                console.error('❌ Email error:', error);
                 statusEl.className = 'email-status error';
-                statusEl.textContent = 'Could not send email, but my love for you remains!';
+                statusEl.textContent = '💔 Could not send email, but my love for you remains!';
             }
         }
 
+        // ============ BACKGROUND EFFECTS ============
         function createStars() {
             const starsContainer = document.getElementById('stars');
             for (let i = 0; i < 80; i++) {
@@ -1023,6 +1308,7 @@
         function createParticles() {
             const container = document.getElementById('particles');
             const emojis = ['💕', '💖', '✨', '💗', '🌟', '💫'];
+            
             for (let i = 0; i < 15; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
@@ -1037,6 +1323,7 @@
 
         function createPetals() {
             const container = document.getElementById('particles');
+            
             for (let i = 0; i < 12; i++) {
                 const petal = document.createElement('div');
                 petal.className = 'petal';
@@ -1050,28 +1337,37 @@
             }
         }
 
+        // ============ AUDIO SETUP ============
         const bgMusic = document.getElementById('background-music');
         let musicPlaying = false;
         let audioInitialized = false;
-        let synth, bellSynth, padSynth, mainVolume;
+        let synth, bellSynth, padSynth;
+        let mainVolume;
+
         bgMusic.volume = 0.12;
 
         async function initAudio() {
             if (audioInitialized) return;
+            
             await Tone.start();
+            
             mainVolume = new Tone.Volume(-10).toDestination();
+            
             synth = new Tone.PolySynth(Tone.Synth, {
                 oscillator: { type: 'sine' },
                 envelope: { attack: 0.1, decay: 0.3, sustain: 0.2, release: 1.5 }
             }).connect(mainVolume);
+            
             bellSynth = new Tone.PolySynth(Tone.Synth, {
                 oscillator: { type: 'triangle' },
                 envelope: { attack: 0.02, decay: 0.5, sustain: 0.1, release: 2 }
             }).connect(mainVolume);
+            
             padSynth = new Tone.PolySynth(Tone.Synth, {
                 oscillator: { type: 'sine' },
                 envelope: { attack: 0.5, decay: 1, sustain: 0.4, release: 3 }
             }).connect(new Tone.Volume(-22).connect(mainVolume));
+            
             audioInitialized = true;
         }
 
@@ -1093,11 +1389,13 @@
             }
         }
 
+        // Auto-start on first interaction
         let firstClick = true;
         document.addEventListener('click', async function() {
             if (firstClick) {
                 firstClick = false;
                 if (!audioInitialized) await initAudio();
+                
                 setTimeout(function() {
                     bgMusic.play().then(function() {
                         musicPlaying = true;
@@ -1109,6 +1407,7 @@
             }
         });
 
+        // ============ SOFT SOUND EFFECTS ============
         function playButtonSound() {
             if (!audioInitialized) return;
             bellSynth.triggerAttackRelease('E5', '8n', Tone.now(), 0.15);
@@ -1126,6 +1425,7 @@
 
         function playCelebrationMelody() {
             if (!audioInitialized) return;
+            
             const melody = [
                 { notes: ['C4', 'E4', 'G4'], time: 0, velocity: 0.08 },
                 { notes: ['D4', 'F4', 'A4'], time: 0.8, velocity: 0.08 },
@@ -1134,6 +1434,7 @@
                 { notes: ['G4', 'B4', 'D5'], time: 3.2, velocity: 0.12 },
                 { notes: ['C4', 'E4', 'G4', 'C5'], time: 4, velocity: 0.12 }
             ];
+
             const now = Tone.now();
             melody.forEach(function(item) {
                 padSynth.triggerAttackRelease(item.notes, '2n', now + item.time, item.velocity);
@@ -1147,12 +1448,14 @@
             bellSynth.triggerAttackRelease(note, '8n', Tone.now(), 0.08);
         }
 
+        // ============ NAVIGATION & INTERACTIONS ============
         function nextStage(stageNum) {
             playButtonSound();
             const stages = document.querySelectorAll('.stage');
             stages.forEach(function(stage) {
                 stage.classList.remove('active');
             });
+            
             const nextStageEl = document.getElementById('stage' + stageNum);
             if (nextStageEl) {
                 nextStageEl.classList.add('active');
@@ -1163,14 +1466,17 @@
         function dodgeNo(btn, nextStageNum) {
             dodgeCount++;
             playDodgeSound();
+            
             if (dodgeCount < 4) {
                 const angle = Math.random() * Math.PI * 2;
                 const distance = 60 + Math.random() * 80;
                 const x = Math.cos(angle) * distance;
                 const y = Math.sin(angle) * distance;
+                
                 btn.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
                 btn.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                const messages = ['Please, Irene?', 'Pretty please?', 'One more chance?', 'Say yes!'];
+                
+                const messages = ['Please, Irene? 🥺', 'Pretty please? 💕', 'One more chance? 🌹', 'Say yes! 💖'];
                 btn.textContent = messages[Math.min(dodgeCount - 1, messages.length - 1)];
             } else {
                 nextStage(nextStageNum);
@@ -1183,6 +1489,7 @@
             console.log('Irene selected:', choice);
         }
 
+        // ============ CUSTOM MODAL ============
         function showModal() {
             playChoiceSound();
             const modal = document.getElementById('customModal');
@@ -1202,34 +1509,57 @@
             }
         });
 
+        // ============ LOVE LETTER ============
         function openLoveLetter() {
             playButtonSound();
             const letterWindow = window.open('', '_blank');
-            const letterContent = generateLoveLetterText();
-            letterWindow.document.write('<!DOCTYPE html><html><head><title>A Love Letter for Irene</title><link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet"><style>body{font-family:"Cormorant Garamond",Georgia,serif;background:linear-gradient(135deg,#1a1a2e,#16213e);color:#FDF8F5;padding:40px;line-height:1.8;min-height:100vh}.letter{max-width:700px;margin:0 auto;background:linear-gradient(145deg,rgba(253,248,245,0.95),rgba(247,231,206,0.9));color:#4a3f3f;padding:50px;border-radius:20px;box-shadow:0 20px 60px rgba(139,41,66,0.3);white-space:pre-wrap;font-size:1.1em}h1{font-family:"Dancing Script",cursive;color:#8B2942;text-align:center;font-size:2.5em;margin-bottom:30px}</style></head><body><div class="letter"><h1>A Love Letter for Irene</h1>' + letterContent.replace(/\n/g, '<br>') + '</div></body></html>');
+            const letterContent = generateLoveLetterHTML();
+            
+            // Build the HTML content
+            var htmlContent = '<!DOCTYPE html>';
+            htmlContent += '<html>';
+            htmlContent += '<head>';
+            htmlContent += '<title>💌 A Love Letter for Irene</title>';
+            htmlContent += '<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">';
+            htmlContent += '<style>';
+            htmlContent += 'body{font-family:"Cormorant Garamond",Georgia,serif;background:linear-gradient(135deg,#1a1a2e,#16213e);color:#FDF8F5;padding:40px;line-height:1.8;min-height:100vh}';
+            htmlContent += '.letter{max-width:700px;margin:0 auto;background:linear-gradient(145deg,rgba(253,248,245,0.95),rgba(247,231,206,0.9));color:#4a3f3f;padding:50px;border-radius:20px;box-shadow:0 20px 60px rgba(139,41,66,0.3);white-space:pre-wrap;font-size:1.1em}';
+            htmlContent += 'h1{font-family:"Dancing Script",cursive;color:#8B2942;text-align:center;font-size:2.5em;margin-bottom:30px}';
+            htmlContent += '</style>';
+            htmlContent += '</head>';
+            htmlContent += '<body>';
+            htmlContent += '<div class="letter">';
+            htmlContent += '<h1>💕 A Love Letter for Irene 💕</h1>';
+            htmlContent += letterContent.replace(/\n/g, '<br>');
+            htmlContent += '</div>';
+            htmlContent += '</body>';
+            htmlContent += '</html>';
+            
+            letterWindow.document.write(htmlContent);
+            letterWindow.document.close();
         }
 
-        function generateLoveLetterText() {
+        function generateLoveLetterHTML() {
             const choiceMessages = {
                 'dinner': {
                     text: 'a candlelit dinner together',
-                    message: 'Your choice speaks of intimacy, of wanting to share those precious moments face to face, where I can see the sparkle in your eyes and hear your laughter fill the room.'
+                    message: 'Your choice speaks of intimacy, of wanting to share those precious moments face to face, where I can see the sparkle in your eyes and hear your laughter fill the room. I promise when we meet, I will create the most magical evening for us. 🕯️'
                 },
                 'stars': {
                     text: 'stargazing under the night sky',
-                    message: 'How beautifully romantic! You chose to look at the stars with me, and it reminds me that we share the same sky, no matter how far apart we are.'
+                    message: 'How beautifully romantic! You chose to look at the stars with me, and it reminds me that we share the same sky, no matter how far apart we are. When we\'re together, I\'ll hold you close as we watch the cosmos, knowing you\'re my brightest star. 🌙'
                 },
                 'dance': {
                     text: 'dancing together',
-                    message: 'This choice melts my heart! You want to be in my arms, moving together as one. I cannot wait for that moment when I finally get to hold you close.'
+                    message: 'This choice melts my heart! You want to be in my arms, moving together as one. I cannot wait for that moment when I finally get to hold you close, feel your heartbeat against mine, and dance with you until the world fades away. 💃'
                 },
                 'cozy': {
                     text: 'a cozy night in',
-                    message: 'You chose comfort and closeness, just the two of us in our own little world. This tells me you treasure the simple, intimate moments.'
+                    message: 'You chose comfort and closeness—just the two of us in our own little world. This tells me you treasure the simple, intimate moments, and so do I. I dream of those quiet evenings with you, where we can just be together, wrapped in love and warmth. 🏡'
                 },
                 'unknown': {
                     text: 'our perfect moment together',
-                    message: 'Every choice would have been perfect, because anything with you is magical.'
+                    message: 'Every choice would have been perfect, because anything with you is magical. I cannot wait to create all these memories with you. 💕'
                 }
             };
 
@@ -1249,30 +1579,37 @@
             
             const dateStr = months[today.getMonth()] + ' ' + today.getDate() + getOrdinalSuffix(today.getDate()) + ', ' + today.getFullYear();
 
-            return 'My Beloved Irene,\n\nAs I write these words, my heart overflows with emotions that transcend the miles between us. Though oceans separate us, you are never far from my thoughts.\n\nWhen you said yes to being my Valentine, you illuminated my world in ways I never thought possible. The distance that lies between us feels insignificant when I think of the closeness of our souls.\n\nI remember you chose ' + choiceData.text + '. ' + choiceData.message + '\n\nIrene, you are the sunrise I long to see, the melody that plays in my mind, the warmth I crave on the coldest nights. Every conversation with you is a treasure, every message a love letter in itself.\n\nI promise you this: When we are finally together, I will make up for every moment we have spent apart. I will hold you close and never let go. Until then, know that you are my every wish, my sweetest dream, my forever Valentine.\n\nThe distance is temporary, my love, but what we have is eternal.\n\nHappy Valentines Day, my darling Irene. You are loved beyond measure, cherished beyond words, and needed beyond time itself.\n\nForever and always yours,\n' + YOUR_NAME + '\n\nWritten with love on ' + dateStr;
+            return 'My Beloved Irene,\n\nAs I write these words, my heart overflows with emotions that transcend the miles between us. Though oceans separate us, you are never far from my thoughts—you are woven into every beat of my heart, every breath I take.\n\nWhen you said yes to being my Valentine, you illuminated my world in ways I never thought possible. The distance that lies between us feels insignificant when I think of the closeness of our souls. You\'ve shown me that love knows no borders, no time zones, no physical barriers.\n\nI remember you chose ' + choiceData.text + '. ' + choiceData.message + '\n\nIrene, you are the sunrise I long to see, the melody that plays in my mind, the warmth I crave on the coldest nights. Every conversation with you is a treasure, every message a love letter in itself. You make me believe in the impossible—that two hearts can be one despite being worlds apart.\n\n━━━━━━━━━━\n\nI promise you this: When we are finally together, I will make up for every moment we\'ve spent apart. I\'ll hold you close and never let go. I\'ll show you, in person, just how deeply and completely you are loved. Until then, know that you are my every wish, my sweetest dream, my forever Valentine.\n\nThe distance is temporary, my love, but what we have is eternal. You\'ve captured my heart in ways I cannot fully express, but I will spend the rest of my life trying to show you.\n\nHappy Valentine\'s Day, my darling Irene. You are loved beyond measure, cherished beyond words, and needed beyond time itself.\n\n💕 ✨ 💖 ✨ 💕\n\nForever and always yours,\n' + YOUR_NAME + '\n\n"Distance means so little when someone means so much." 💫\n\n━━━━━━━━━━\nWritten with love on ' + dateStr;
         }
 
+        // ============ CELEBRATION ============
         function celebrate() {
             playCelebrationMelody();
+            
             const stages = document.querySelectorAll('.stage');
             stages.forEach(function(stage) {
                 stage.classList.remove('active');
             });
             document.getElementById('celebration').classList.add('active');
+            
+            // AUTO-SEND EMAIL WHEN SHE SAYS YES!
             setTimeout(function() {
                 sendLoveLetterEmail();
             }, 1500);
+            
             for (let i = 0; i < 60; i++) {
                 setTimeout(function() {
                     createExplosionHeart();
                     if (i % 8 === 0) playHeartChime();
                 }, i * 60);
             }
+            
             for (let i = 0; i < 30; i++) {
                 setTimeout(function() {
                     createSparkle();
                 }, i * 100 + 500);
             }
+            
             setInterval(function() {
                 if (Math.random() > 0.6) createExplosionHeart();
             }, 800);
@@ -1282,15 +1619,18 @@
             const heart = document.createElement('div');
             heart.className = 'heart-explosion';
             heart.textContent = ['💕', '💖', '💗', '❤️', '🌹', '✨', '💫'][Math.floor(Math.random() * 7)];
+            
             const centerX = window.innerWidth / 2;
             const centerY = window.innerHeight / 2;
             heart.style.left = centerX + 'px';
             heart.style.top = centerY + 'px';
+            
             const angle = Math.random() * Math.PI * 2;
             const distance = Math.random() * 350 + 150;
             heart.style.setProperty('--x', Math.cos(angle) * distance + 'px');
             heart.style.setProperty('--y', Math.sin(angle) * distance + 'px');
             heart.style.setProperty('--rotation', (Math.random() * 720 - 360) + 'deg');
+            
             document.body.appendChild(heart);
             setTimeout(function() {
                 heart.remove();
