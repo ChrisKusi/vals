@@ -1512,7 +1512,11 @@
         // ============ LOVE LETTER ============
         function openLoveLetter() {
             playButtonSound();
-            const letterWindow = window.open('', '_blank');
+            const letterWindow = window.open('love-letter.html?choice=' + userChoice, '_blank'); //window.open('', '_blank');
+            //function openLoveLetter() {
+            //playButtonSound();
+            //window.open('love-letter.html?choice=' + userChoice, '_blank');
+        
             const letterContent = generateLoveLetterHTML();
             
             // Build the HTML content
@@ -1535,8 +1539,8 @@
             htmlContent += '</body>';
             htmlContent += '</html>';
             
-            letterWindow.document.write(htmlContent);
-            letterWindow.document.close();
+            // letterWindow.document.write(htmlContent);
+            // letterWindow.document.close();
         }
 
         function generateLoveLetterHTML() {
