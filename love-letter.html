@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Love Letter for Irene 💌</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --rose-deep: #8B2942;
+            --rose-blush: #D4A5A5;
+            --gold-warm: #C9A962;
+            --cream: #FDF8F5;
+            --burgundy: #722F37;
+            --champagne: #F7E7CE;
+            --midnight: #1a1a2e;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--midnight) 0%, #16213e 50%, var(--midnight) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--gold-warm);
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Letter container */
+        .letter-container {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            width: 100%;
+            background: var(--cream);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 
+                0 30px 90px rgba(139, 41, 66, 0.4),
+                0 0 100px rgba(201, 169, 98, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            border: 3px solid var(--gold-warm);
+            animation: letterReveal 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes letterReveal {
+            from {
+                opacity: 0;
+                transform: scale(0.8) rotateX(20deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotateX(0deg);
+            }
+        }
+
+        /* Wax seal decoration */
+        .wax-seal {
+            position: absolute;
+            top: -40px;
+            right: 50px;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, var(--rose-deep) 0%, var(--burgundy) 100%);
+            border-radius: 50%;
+            border: 4px solid var(--gold-warm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            box-shadow: 0 10px 30px rgba(139, 41, 66, 0.5);
+            animation: sealPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes sealPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Letter header */
+        .letter-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid rgba(201, 169, 98, 0.3);
+        }
+
+        .letter-date {
+            font-family: 'Dancing Script', cursive;
+            color: var(--gold-warm);
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .letter-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--rose-deep);
+            font-size: 2.8em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(139, 41, 66, 0.1);
+        }
+
+        .letter-subtitle {
+            font-family: 'Dancing Script', cursive;
+            color: var(--burgundy);
+            font-size: 1.5em;
+            font-style: italic;
+        }
+
+        /* Letter body */
+        .letter-body {
+            color: #3a3030;
+            font-size: 1.3em;
+            line-height: 2;
+            text-align: left;
+        }
+
+        .letter-body p {
+            margin-bottom: 25px;
+            text-indent: 40px;
+        }
+
+        .letter-body p:first-child {
+            text-indent: 0;
+        }
+
+        .letter-body p.no-indent {
+            text-indent: 0;
+        }
+
+        .salutation {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4em;
+            color: var(--rose-deep);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: var(--rose-deep);
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .choice-mention {
+            background: linear-gradient(120deg, rgba(201, 169, 98, 0.15) 0%, rgba(139, 41, 66, 0.1) 100%);
+            padding: 25px;
+            border-left: 4px solid var(--gold-warm);
+            margin: 30px 0;
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+        }
+
+        /* Letter signature */
+        .letter-signature {
+            margin-top: 50px;
+            text-align: left;
+        }
+
+        .signature-line {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2em;
+            color: var(--rose-deep);
+            margin-top: 20px;
+        }
+
+        .closing-words {
+            font-style: italic;
+            color: var(--burgundy);
+            margin-bottom: 10px;
+        }
+
+        /* Decorative elements */
+        .divider {
+            text-align: center;
+            margin: 40px 0;
+            color: var(--gold-warm);
+            font-size: 1.5em;
+        }
+
+        .hearts-decoration {
+            text-align: center;
+            font-size: 2em;
+            margin: 30px 0;
+            opacity: 0.6;
+        }
+
+        /* Floating hearts effect */
+        .floating-heart {
+            position: fixed;
+            font-size: 20px;
+            animation: floatUp 8s ease-in-out infinite;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% {
+                transform: translateY(-10vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Close button */
+        .close-letter {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--rose-deep) 0%, var(--burgundy) 100%);
+            color: var(--cream);
+            border: 2px solid var(--gold-warm);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(139, 41, 66, 0.4);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .close-letter:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 35px rgba(139, 41, 66, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .letter-container {
+                padding: 40px 30px;
+            }
+
+            .letter-title {
+                font-size: 2.2em;
+            }
+
+            .letter-body {
+                font-size: 1.15em;
+            }
+
+            .wax-seal {
+                width: 60px;
+                height: 60px;
+                top: -30px;
+                right: 30px;
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div id="floatingHearts"></div>
+
+    <button class="close-letter" onclick="closeLetter()">Return ✨</button>
+
+    <div class="letter-container">
+        <div class="wax-seal">💕</div>
+
+        <div class="letter-header">
+            <div class="letter-date" id="letterDate">February 14th, 2026</div>
+            <h1 class="letter-title">A Love Letter</h1>
+            <div class="letter-subtitle">For My Dearest Irene</div>
+        </div>
+
+        <div class="letter-body">
+            <p class="salutation no-indent">My Beloved Irene,</p>
+
+            <p>
+                As I write these words, my heart overflows with emotions that transcend the miles between us. Though oceans separate us, you are never far from my thoughts—you are woven into every beat of my heart, every breath I take.
+            </p>
+
+            <p>
+                When you said yes to being my Valentine, you illuminated my world in ways I never thought possible. The distance that lies between us feels insignificant when I think of the <span class="highlight">closeness of our souls</span>. You've shown me that love knows no borders, no time zones, no physical barriers.
+            </p>
+
+            <div class="choice-mention" id="choiceSection">
+                <!-- This will be filled dynamically based on her choice -->
+                <p class="no-indent">
+                    I remember you chose <span class="highlight" id="choiceText">our perfect moment together</span>. 
+                    <span id="choiceMessage">This tells me everything about your beautiful heart...</span>
+                </p>
+            </div>
+
+            <p>
+                Irene, you are the <span class="highlight">Strength, Hope and a Home</span>, to me. the warmth I crave on the coldest nights. Every conversation with you is a treasure, every message a love letter in itself. You make me believe in the impossible—that two hearts can be one despite being worlds apart.
+            </p>
+
+            <div class="divider">❦ ❦ ❦</div>
+
+            <p>
+                I promise you this: When we are finally together, I will make up for every moment we've spent apart. I'll hold you close and never let go. I'll show you, in person, just how deeply and completely you are loved. Until then, know that <span class="highlight">you are my every wish, my sweetest dream, my forever Valentine</span>.
+            </p>
+
+            <p>
+                The distance is temporary, my love, but what we have is eternal. You've captured my heart in ways I cannot fully express, but I will spend the rest of my life trying to show you.
+            </p>
+
+            <p class="no-indent">
+                Happy Valentine's Day, my darling Irene. You are loved beyond measure, cherished beyond words, and needed beyond time itself.
+            </p>
+
+            <div class="hearts-decoration">💕 ✨ 💖 ✨ 💕</div>
+
+            <div class="letter-signature">
+                <p class="closing-words">Forever and always yours,</p>
+                <p class="signature-line" id="senderName">Your Love</p>
+                <p style="font-style: italic; color: #8a7575; margin-top: 15px;">
+                    "Distance means so little when someone means so much." 💫
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get choice from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const choice = urlParams.get('choice') || 'unknown';
+
+        // Customize the letter based on her choice
+        const choiceMessages = {
+            'dinner': {
+                text: 'a candlelit dinner together',
+                message: 'Your choice speaks of intimacy, of wanting to share those precious moments face to face, where I can see the sparkle in your eyes and hear your laughter fill the room. I promise when we meet, I will create the most magical evening for us. 🕯️'
+            },
+            'stars': {
+                text: 'stargazing under the night sky',
+                message: 'How beautifully romantic! You chose to look at the stars with me, and it reminds me that we share the same sky, no matter how far apart we are. When we\'re together, I\'ll hold you close as we watch the cosmos, knowing you\'re my brightest star. 🌙'
+            },
+            'dance': {
+                text: 'dancing together',
+                message: 'This choice melts my heart! You want to be in my arms, moving together as one. I cannot wait for that moment when I finally get to hold you close, feel your heartbeat against mine, and dance with you until the world fades away. 💃'
+            },
+            'cozy': {
+                text: 'a cozy night in',
+                message: 'You chose comfort and closeness—just the two of us in our own little world. This tells me you treasure the simple, intimate moments, and so do I. I dream of those quiet evenings with you, where we can just be together, wrapped in love and warmth. 🏡'
+            },
+            'unknown': {
+                text: 'our perfect moment together',
+                message: 'Every choice would have been perfect, because anything with you is magical. I cannot wait to create all these memories with you. 💕'
+            }
+        };
+
+        const choiceData = choiceMessages[choice] || choiceMessages['unknown'];
+        document.getElementById('choiceText').textContent = choiceData.text;
+        document.getElementById('choiceMessage').textContent = choiceData.message;
+
+        // Set current date
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        const today = new Date();
+        const dateStr = `${months[today.getMonth()]} ${today.getDate()}${getOrdinalSuffix(today.getDate())}, ${today.getFullYear()}`;
+        document.getElementById('letterDate').textContent = dateStr;
+
+        function getOrdinalSuffix(day) {
+            if (day > 3 && day < 21) return 'th';
+            switch (day % 10) {
+                case 1: return 'st';
+                case 2: return 'nd';
+                case 3: return 'rd';
+                default: return 'th';
+            }
+        }
+
+        // EDITABLE: Change your name here!
+        document.getElementById('senderName').textContent = 'Chris...'; // ← EDIT THIS!
+
+        // Create twinkling stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Create floating hearts
+        function createFloatingHearts() {
+            const container = document.getElementById('floatingHearts');
+            const hearts = ['💕', '💖', '💗', '💝', '❤️'];
+            
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(heart);
+                
+                setTimeout(() => heart.remove(), 10000);
+            }, 1000);
+        }
+
+        function closeLetter() {
+            window.history.back();
+        }
+
+        // Initialize
+        createStars();
+        createFloatingHearts();
+    </script>
+</body>
+</html>

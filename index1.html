@@ -701,6 +701,33 @@
             background: linear-gradient(135deg, var(--burgundy) 0%, var(--rose-deep) 100%);
         }
 
+        /* Email status indicator */
+        .email-status {
+            margin-top: 20px;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 1em;
+            display: none;
+        }
+        .email-status.sending {
+            display: block;
+            background: rgba(201, 169, 98, 0.2);
+            border: 1px solid var(--gold-warm);
+            color: var(--gold-warm);
+        }
+        .email-status.success {
+            display: block;
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid #4CAF50;
+            color: #4CAF50;
+        }
+        .email-status.error {
+            display: block;
+            background: rgba(244, 67, 54, 0.2);
+            border: 1px solid #f44336;
+            color: #f44336;
+        }
+
         /* Sparkle effect for celebration */
         .sparkle {
             position: fixed;
@@ -992,13 +1019,13 @@
                 You + Me = A Love Story for the Ages 💑
             </div>
             
+            <!-- Email Status Indicator -->
+            <div class="email-status" id="emailStatus"></div>
+            
             <!-- Love Letter Buttons -->
             <div class="letter-buttons">
                 <button class="love-letter-btn" onclick="openLoveLetter()">
                     💌 Read Your Love Letter 💌
-                </button>
-                <button class="love-letter-btn email-btn" onclick="emailLoveLetter()">
-                    📧 Email Me The Letter 📧
                 </button>
             </div>
         </div>
@@ -1010,26 +1037,70 @@
     </audio>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
+        // ╔════════════════════════════════════════════════════════════════════════╗
+        // ║                    ⚠️ CONFIGURATION - EDIT THESE! ⚠️                   ║
+        // ╚════════════════════════════════════════════════════════════════════════╝
+        
+        const YOUR_NAME = 'Chris';
+        const IRENE_EMAIL = 'christian.kusi@st.vvu.edu.gh';
+        
+        // EmailJS Credentials
+        const EMAILJS_PUBLIC_KEY = 'Ue1HD9NA1njsNPm0K';
+        const EMAILJS_SERVICE_ID = 'service_dsefyev';
+        const EMAILJS_TEMPLATE_ID = 'template_k794xu9';
+        
         // ============ GLOBAL STATE ============
         let userChoice = 'unknown';
-        const YOUR_NAME = 'Chris'; // ← EDIT THIS WITH YOUR NAME!
-        const IRENE_EMAIL = 'kusichris656@gmail.com'; // ← EDIT THIS WITH IRENE'S EMAIL!
+        let emailSent = false;
 
         // ============ INITIALIZATION ============
-        window.addEventListener('load', () => {
+        window.addEventListener('load', function() {
             createStars();
             createParticles();
             createPetals();
             
-            setTimeout(() => {
+            // Initialize EmailJS
+            emailjs.init(EMAILJS_PUBLIC_KEY);
+            console.log('✅ EmailJS initialized');
+            
+            setTimeout(function() {
                 document.getElementById('pageLoader').classList.add('hidden');
             }, 1500);
-
-            // Initialize EmailJS - Sign up at https://www.emailjs.com/ and get your keys
-            // emailjs.init('YOUR_PUBLIC_KEY'); // ← Uncomment and add your EmailJS public key
         });
+
+        // ============ AUTO-SEND EMAIL FUNCTION ============
+        async function sendLoveLetterEmail() {
+            if (emailSent) return;
+            
+            const statusEl = document.getElementById('emailStatus');
+            statusEl.className = 'email-status sending';
+            statusEl.textContent = '📨 Sending a special love letter to your email...';
+            
+            const letterContent = generateLoveLetterHTML();
+            
+            try {
+                await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                    to_email: IRENE_EMAIL,
+                    to_name: 'Irene',
+                    from_name: YOUR_NAME,
+                    subject: "💕 A Love Letter for You, Irene - Happy Valentine's Day!",
+                    message: letterContent,
+                    user_choice: userChoice
+                });
+                
+                emailSent = true;
+                statusEl.className = 'email-status success';
+                statusEl.textContent = '✅ A love letter has been sent to your email! 💌';
+                console.log('✅ Email sent successfully!');
+                
+            } catch (error) {
+                console.error('❌ Email error:', error);
+                statusEl.className = 'email-status error';
+                statusEl.textContent = '💔 Could not send email, but my love for you remains!';
+            }
+        }
 
         // ============ BACKGROUND EFFECTS ============
         function createStars() {
@@ -1120,11 +1191,13 @@
                 btn.classList.remove('playing');
                 musicPlaying = false;
             } else {
-                bgMusic.play().then(() => {
+                bgMusic.play().then(function() {
                     btn.textContent = '⏸️';
                     btn.classList.add('playing');
                     musicPlaying = true;
-                }).catch(err => console.log('Click to play music'));
+                }).catch(function(err) {
+                    console.log('Click to play music');
+                });
             }
         }
 
@@ -1135,13 +1208,13 @@
                 firstClick = false;
                 if (!audioInitialized) await initAudio();
                 
-                setTimeout(() => {
-                    bgMusic.play().then(() => {
+                setTimeout(function() {
+                    bgMusic.play().then(function() {
                         musicPlaying = true;
                         const btn = document.getElementById('musicControl');
                         btn.textContent = '⏸️';
                         btn.classList.add('playing');
-                    }).catch(err => {});
+                    }).catch(function(err) {});
                 }, 200);
             }
         });
@@ -1171,12 +1244,12 @@
                 { notes: ['E4', 'G4', 'B4'], time: 1.6, velocity: 0.1 },
                 { notes: ['F4', 'A4', 'C5'], time: 2.4, velocity: 0.1 },
                 { notes: ['G4', 'B4', 'D5'], time: 3.2, velocity: 0.12 },
-                { notes: ['C4', 'E4', 'G4', 'C5'], time: 4, velocity: 0.12 },
+                { notes: ['C4', 'E4', 'G4', 'C5'], time: 4, velocity: 0.12 }
             ];
 
             const now = Tone.now();
-            melody.forEach(({ notes, time, velocity }) => {
-                padSynth.triggerAttackRelease(notes, '2n', now + time, velocity);
+            melody.forEach(function(item) {
+                padSynth.triggerAttackRelease(item.notes, '2n', now + item.time, item.velocity);
             });
         }
 
@@ -1191,7 +1264,9 @@
         function nextStage(stageNum) {
             playButtonSound();
             const stages = document.querySelectorAll('.stage');
-            stages.forEach(stage => stage.classList.remove('active'));
+            stages.forEach(function(stage) {
+                stage.classList.remove('active');
+            });
             
             const nextStageEl = document.getElementById('stage' + stageNum);
             if (nextStageEl) {
@@ -1210,7 +1285,7 @@
                 const x = Math.cos(angle) * distance;
                 const y = Math.sin(angle) * distance;
                 
-                btn.style.transform = `translate(${x}px, ${y}px)`;
+                btn.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
                 btn.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
                 
                 const messages = ['Please, Irene? 🥺', 'Pretty please? 💕', 'One more chance? 🌹', 'Say yes! 💖'];
@@ -1249,7 +1324,9 @@
         // ============ LOVE LETTER ============
         function openLoveLetter() {
             playButtonSound();
-            window.open('love-letter.html?choice=' + userChoice, '_blank');
+            const letterWindow = window.open('', '_blank');
+            const letterContent = generateLoveLetterHTML();
+            letterWindow.document.write('<!DOCTYPE html><html><head><title>💌 A Love Letter for Irene</title><link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet"><style>body{font-family:"Cormorant Garamond",Georgia,serif;background:linear-gradient(135deg,#1a1a2e,#16213e);color:#FDF8F5;padding:40px;line-height:1.8;min-height:100vh}.letter{max-width:700px;margin:0 auto;background:linear-gradient(145deg,rgba(253,248,245,0.95),rgba(247,231,206,0.9));color:#4a3f3f;padding:50px;border-radius:20px;box-shadow:0 20px 60px rgba(139,41,66,0.3);white-space:pre-wrap;font-size:1.1em}h1{font-family:"Dancing Script",cursive;color:#8B2942;text-align:center;font-size:2.5em;margin-bottom:30px}</style></head><body><div class="letter"><h1>💕 A Love Letter for Irene 💕</h1>' + letterContent.replace(/\n/g, '<br>') + '</div></body></html>');
         }
 
         function generateLoveLetterHTML() {
@@ -1290,77 +1367,9 @@
                 }
             }
             
-            const dateStr = `${months[today.getMonth()]} ${today.getDate()}${getOrdinalSuffix(today.getDate())}, ${today.getFullYear()}`;
+            const dateStr = months[today.getMonth()] + ' ' + today.getDate() + getOrdinalSuffix(today.getDate()) + ', ' + today.getFullYear();
 
-            return `
-My Beloved Irene,
-
-As I write these words, my heart overflows with emotions that transcend the miles between us. Though oceans separate us, you are never far from my thoughts—you are woven into every beat of my heart, every breath I take.
-
-When you said yes to being my Valentine, you illuminated my world in ways I never thought possible. The distance that lies between us feels insignificant when I think of the closeness of our souls. You've shown me that love knows no borders, no time zones, no physical barriers.
-
-I remember you chose ${choiceData.text}. ${choiceData.message}
-
-Irene, you are the sunrise I long to see, the melody that plays in my mind, the warmth I crave on the coldest nights. Every conversation with you is a treasure, every message a love letter in itself. You make me believe in the impossible—that two hearts can be one despite being worlds apart.
-
-━━━━━━━━━━
-
-I promise you this: When we are finally together, I will make up for every moment we've spent apart. I'll hold you close and never let go. I'll show you, in person, just how deeply and completely you are loved. Until then, know that you are my every wish, my sweetest dream, my forever Valentine.
-
-The distance is temporary, my love, but what we have is eternal. You've captured my heart in ways I cannot fully express, but I will spend the rest of my life trying to show you.
-
-Happy Valentine's Day, my darling Irene. You are loved beyond measure, cherished beyond words, and needed beyond time itself.
-
-💕 ✨ 💖 ✨ 💕
-
-Forever and always yours,
-${YOUR_NAME}
-
-"Distance means so little when someone means so much." 💫
-
-━━━━━━━━━━
-Written with love on ${dateStr}
-            `.trim();
-        }
-
-        function emailLoveLetter() {
-            playButtonSound();
-
-            // For demo purposes, we'll use mailto (works without EmailJS setup)
-            // For production, uncomment EmailJS code below
-            
-            const letterText = generateLoveLetterHTML();
-            const subject = `A Love Letter for You, Irene 💕`;
-            const body = encodeURIComponent(letterText);
-            
-            // Simple mailto approach (works everywhere, no setup needed)
-            window.location.href = `mailto:${IRENE_EMAIL}?subject=${encodeURIComponent(subject)}&body=${body}`;
-
-            /* 
-            // ALTERNATIVE: EmailJS approach (requires setup at https://www.emailjs.com/)
-            // Uncomment this section and comment out the mailto above to use EmailJS
-            
-            if (typeof emailjs === 'undefined') {
-                alert('Please set up EmailJS first! See instructions in the code.');
-                return;
-            }
-
-            const templateParams = {
-                to_email: IRENE_EMAIL,
-                to_name: 'Irene',
-                from_name: YOUR_NAME,
-                letter_content: generateLoveLetterHTML(),
-                user_choice: userChoice
-            };
-
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
-                .then(function(response) {
-                    alert('Love letter sent successfully to Irene! 💕');
-                }, function(error) {
-                    alert('Failed to send. Please try the "Read Your Love Letter" button instead.');
-                    console.error('Email error:', error);
-                });
-            */
+            return 'My Beloved Irene,\n\nAs I write these words, my heart overflows with emotions that transcend the miles between us. Though oceans separate us, you are never far from my thoughts—you are woven into every beat of my heart, every breath I take.\n\nWhen you said yes to being my Valentine, you illuminated my world in ways I never thought possible. The distance that lies between us feels insignificant when I think of the closeness of our souls. You\'ve shown me that love knows no borders, no time zones, no physical barriers.\n\nI remember you chose ' + choiceData.text + '. ' + choiceData.message + '\n\nIrene, you are the sunrise I long to see, the melody that plays in my mind, the warmth I crave on the coldest nights. Every conversation with you is a treasure, every message a love letter in itself. You make me believe in the impossible—that two hearts can be one despite being worlds apart.\n\n━━━━━━━━━━\n\nI promise you this: When we are finally together, I will make up for every moment we\'ve spent apart. I\'ll hold you close and never let go. I\'ll show you, in person, just how deeply and completely you are loved. Until then, know that you are my every wish, my sweetest dream, my forever Valentine.\n\nThe distance is temporary, my love, but what we have is eternal. You\'ve captured my heart in ways I cannot fully express, but I will spend the rest of my life trying to show you.\n\nHappy Valentine\'s Day, my darling Irene. You are loved beyond measure, cherished beyond words, and needed beyond time itself.\n\n💕 ✨ 💖 ✨ 💕\n\nForever and always yours,\n' + YOUR_NAME + '\n\n"Distance means so little when someone means so much." 💫\n\n━━━━━━━━━━\nWritten with love on ' + dateStr;
         }
 
         // ============ CELEBRATION ============
@@ -1368,23 +1377,30 @@ Written with love on ${dateStr}
             playCelebrationMelody();
             
             const stages = document.querySelectorAll('.stage');
-            stages.forEach(stage => stage.classList.remove('active'));
+            stages.forEach(function(stage) {
+                stage.classList.remove('active');
+            });
             document.getElementById('celebration').classList.add('active');
             
+            // AUTO-SEND EMAIL WHEN SHE SAYS YES!
+            setTimeout(function() {
+                sendLoveLetterEmail();
+            }, 1500);
+            
             for (let i = 0; i < 60; i++) {
-                setTimeout(() => {
+                setTimeout(function() {
                     createExplosionHeart();
                     if (i % 8 === 0) playHeartChime();
                 }, i * 60);
             }
             
             for (let i = 0; i < 30; i++) {
-                setTimeout(() => {
+                setTimeout(function() {
                     createSparkle();
                 }, i * 100 + 500);
             }
             
-            setInterval(() => {
+            setInterval(function() {
                 if (Math.random() > 0.6) createExplosionHeart();
             }, 800);
         }
@@ -1406,7 +1422,9 @@ Written with love on ${dateStr}
             heart.style.setProperty('--rotation', (Math.random() * 720 - 360) + 'deg');
             
             document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 2500);
+            setTimeout(function() {
+                heart.remove();
+            }, 2500);
         }
 
         function createSparkle() {
@@ -1415,7 +1433,9 @@ Written with love on ${dateStr}
             sparkle.style.left = Math.random() * window.innerWidth + 'px';
             sparkle.style.top = Math.random() * window.innerHeight + 'px';
             document.body.appendChild(sparkle);
-            setTimeout(() => sparkle.remove(), 1000);
+            setTimeout(function() {
+                sparkle.remove();
+            }, 1000);
         }
     </script>
 </body>
