@@ -1128,26 +1128,26 @@
         <!-- Stage 3: Dream Date Selection -->
         <div class="stage" id="stage3">
             <h1>Perfect, Irene!<span class="script">Now, let's dream together...</span></h1>
-            <p>When we're finally together, what does your ideal Valentine's Day look like?</p>
+            <p>Even miles apart, we can still share magical moments. How would you like to spend our Valentine's Day together?</p>
             <div class="choice-grid">
-                <div class="choice-card" onclick="selectChoice('dinner'); nextStage(4)">
-                    <span class="emoji">🕯️</span>
-                    <span>Candlelit Dinner</span>
+                <div class="choice-card" onclick="selectChoice('videocall'); nextStage(4)">
+                    <span class="emoji">📱</span>
+                    <span>Virtual Movie Night</span>
                 </div>
-                <div class="choice-card" onclick="selectChoice('stars'); nextStage(4)">
-                    <span class="emoji">🌙</span>
-                    <span>Stargazing</span>
+                <div class="choice-card" onclick="selectChoice('sunset'); nextStage(4)">
+                    <span class="emoji">🌅</span>
+                    <span>Watch Sunset Together</span>
                 </div>
-                <div class="choice-card" onclick="selectChoice('dance'); nextStage(4)">
-                    <span class="emoji">💃</span>
-                    <span>Dancing Together</span>
+                <div class="choice-card" onclick="selectChoice('letters'); nextStage(4)">
+                    <span class="emoji">💌</span>
+                    <span>Exchange Love Letters</span>
                 </div>
-                <div class="choice-card" onclick="selectChoice('cozy'); nextStage(4)">
-                    <span class="emoji">🏡</span>
-                    <span>Cozy Night In</span>
+                <div class="choice-card" onclick="selectChoice('playlist'); nextStage(4)">
+                    <span class="emoji">🎵</span>
+                    <span>Share a Playlist</span>
                 </div>
             </div>
-            <p class="subtext">Spoiler: They all sound amazing with you, Irene... 🌹</p>
+            <p class="subtext">Distance can't stop us from making beautiful memories, Irene... 🌹</p>
         </div>
 
         <!-- Stage 4: Love Quiz -->
@@ -1468,10 +1468,24 @@
             playDodgeSound();
             
             if (dodgeCount < 4) {
+                // Get container dimensions
+                const container = document.querySelector('.container');
+                const containerRect = container.getBoundingClientRect();
+                const btnRect = btn.getBoundingClientRect();
+                
+                // Calculate safe movement area (keep button inside container with padding)
+                const maxX = (containerRect.width - btnRect.width) / 2 - 40;
+                const maxY = (containerRect.height - btnRect.height) / 2 - 40;
+                
+                // Generate random position within safe bounds
                 const angle = Math.random() * Math.PI * 2;
-                const distance = 60 + Math.random() * 80;
-                const x = Math.cos(angle) * distance;
-                const y = Math.sin(angle) * distance;
+                const distance = 40 + Math.random() * 50;
+                let x = Math.cos(angle) * distance;
+                let y = Math.sin(angle) * distance;
+                
+                // Clamp to safe area
+                x = Math.max(-maxX, Math.min(maxX, x));
+                y = Math.max(-maxY, Math.min(maxY, y));
                 
                 btn.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
                 btn.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
@@ -1512,58 +1526,31 @@
         // ============ LOVE LETTER ============
         function openLoveLetter() {
             playButtonSound();
-            const letterWindow = window.open('love-letter.html?choice=' + userChoice, '_blank'); //window.open('', '_blank');
-            //function openLoveLetter() {
-            //playButtonSound();
-            //window.open('love-letter.html?choice=' + userChoice, '_blank');
-        
-            const letterContent = generateLoveLetterHTML();
-            
-            // Build the HTML content
-            var htmlContent = '<!DOCTYPE html>';
-            htmlContent += '<html>';
-            htmlContent += '<head>';
-            htmlContent += '<title>💌 A Love Letter for Irene</title>';
-            htmlContent += '<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">';
-            htmlContent += '<style>';
-            htmlContent += 'body{font-family:"Cormorant Garamond",Georgia,serif;background:linear-gradient(135deg,#1a1a2e,#16213e);color:#FDF8F5;padding:40px;line-height:1.8;min-height:100vh}';
-            htmlContent += '.letter{max-width:700px;margin:0 auto;background:linear-gradient(145deg,rgba(253,248,245,0.95),rgba(247,231,206,0.9));color:#4a3f3f;padding:50px;border-radius:20px;box-shadow:0 20px 60px rgba(139,41,66,0.3);white-space:pre-wrap;font-size:1.1em}';
-            htmlContent += 'h1{font-family:"Dancing Script",cursive;color:#8B2942;text-align:center;font-size:2.5em;margin-bottom:30px}';
-            htmlContent += '</style>';
-            htmlContent += '</head>';
-            htmlContent += '<body>';
-            htmlContent += '<div class="letter">';
-            htmlContent += '<h1>💕 A Love Letter for Irene 💕</h1>';
-            htmlContent += letterContent.replace(/\n/g, '<br>');
-            htmlContent += '</div>';
-            htmlContent += '</body>';
-            htmlContent += '</html>';
-            
-            // letterWindow.document.write(htmlContent);
-            // letterWindow.document.close();
+            // Open the external love letter HTML file with the user's choice
+            window.open('love-letter.html?choice=' + userChoice, '_blank');
         }
 
         function generateLoveLetterHTML() {
             const choiceMessages = {
-                'dinner': {
-                    text: 'a candlelit dinner together',
-                    message: 'Your choice speaks of intimacy, of wanting to share those precious moments face to face, where I can see the sparkle in your eyes and hear your laughter fill the room. I promise when we meet, I will create the most magical evening for us. 🕯️'
+                'videocall': {
+                    text: 'a virtual movie night together',
+                    message: 'Your choice shows me you want to share cozy moments, even from afar. I love how we can be together in spirit, laughing at the same scenes, feeling connected across the miles. I promise to make every video call special, every shared moment count. 📱💕'
                 },
-                'stars': {
-                    text: 'stargazing under the night sky',
-                    message: 'How beautifully romantic! You chose to look at the stars with me, and it reminds me that we share the same sky, no matter how far apart we are. When we\'re together, I\'ll hold you close as we watch the cosmos, knowing you\'re my brightest star. 🌙'
+                'sunset': {
+                    text: 'watching the sunset together',
+                    message: 'How beautifully romantic! You chose to share the same sky with me, even though we\'re miles apart. Knowing we can watch the sun paint the horizon at the same time, both of us thinking of each other, makes the distance feel smaller. You are my sunset, my dawn, my everything. 🌅'
                 },
-                'dance': {
-                    text: 'dancing together',
-                    message: 'This choice melts my heart! You want to be in my arms, moving together as one. I cannot wait for that moment when I finally get to hold you close, feel your heartbeat against mine, and dance with you until the world fades away. 💃'
+                'letters': {
+                    text: 'exchanging love letters',
+                    message: 'This choice touches my heart so deeply! In this digital age, you want something timeless, something we can hold and treasure. Every word I write to you carries my love across the distance. Your letters are my most precious possessions, and I\'ll keep them forever. 💌'
                 },
-                'cozy': {
-                    text: 'a cozy night in',
-                    message: 'You chose comfort and closeness—just the two of us in our own little world. This tells me you treasure the simple, intimate moments, and so do I. I dream of those quiet evenings with you, where we can just be together, wrapped in love and warmth. 🏡'
+                'playlist': {
+                    text: 'sharing a playlist together',
+                    message: 'Music connects our souls across the distance! You understand that every song I send you carries a piece of my heart, every melody speaks what words sometimes cannot. When you listen, I hope you feel me there with you, singing along. 🎵💕'
                 },
                 'unknown': {
-                    text: 'our perfect moment together',
-                    message: 'Every choice would have been perfect, because anything with you is magical. I cannot wait to create all these memories with you. 💕'
+                    text: 'creating beautiful memories together',
+                    message: 'Every moment with you is precious, no matter how we share it. Distance is just a test of how far love can travel, and ours knows no bounds. I cannot wait for all the memories we\'ll create together. 💕'
                 }
             };
 

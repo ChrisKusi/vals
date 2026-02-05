@@ -267,25 +267,286 @@
             box-shadow: 0 12px 35px rgba(139, 41, 66, 0.5);
         }
 
-        @media (max-width: 768px) {
+        /* Large screens */
+        @media (min-width: 1400px) {
             .letter-container {
-                padding: 40px 30px;
+                max-width: 1000px;
+                padding: 80px 70px;
             }
 
             .letter-title {
-                font-size: 2.2em;
+                font-size: 3.2em;
             }
 
             .letter-body {
-                font-size: 1.15em;
+                font-size: 1.4em;
+            }
+
+            .wax-seal {
+                width: 100px;
+                height: 100px;
+                top: -50px;
+                font-size: 2.5em;
+            }
+        }
+
+        /* Tablets and small laptops */
+        @media (max-width: 1024px) {
+            body {
+                padding: 30px 15px;
+            }
+
+            .letter-container {
+                padding: 50px 40px;
+            }
+
+            .letter-title {
+                font-size: 2.5em;
+            }
+
+            .letter-body {
+                font-size: 1.25em;
+                line-height: 1.9;
+            }
+
+            .close-letter {
+                top: 20px;
+                right: 20px;
+                padding: 10px 25px;
+                font-size: 1em;
+            }
+        }
+
+        /* Mobile tablets */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+            }
+
+            .letter-container {
+                padding: 40px 25px;
+                border-radius: 15px;
+                border-width: 2px;
+            }
+
+            .letter-header {
+                margin-bottom: 30px;
+                padding-bottom: 20px;
+            }
+
+            .letter-date {
+                font-size: 1.1em;
+                margin-bottom: 10px;
+            }
+
+            .letter-title {
+                font-size: 2em;
+                margin-bottom: 8px;
+            }
+
+            .letter-subtitle {
+                font-size: 1.3em;
+            }
+
+            .letter-body {
+                font-size: 1.1em;
+                line-height: 1.8;
+            }
+
+            .letter-body p {
+                margin-bottom: 20px;
+                text-indent: 25px;
+            }
+
+            .salutation {
+                font-size: 1.25em;
+                margin-bottom: 15px;
+            }
+
+            .choice-mention {
+                padding: 20px;
+                margin: 25px 0;
+                border-left-width: 3px;
+            }
+
+            .divider {
+                font-size: 1.3em;
+                margin: 30px 0;
+            }
+
+            .hearts-decoration {
+                font-size: 1.8em;
+                margin: 25px 0;
+            }
+
+            .letter-signature {
+                margin-top: 40px;
+            }
+
+            .signature-line {
+                font-size: 1.8em;
+                margin-top: 15px;
             }
 
             .wax-seal {
                 width: 60px;
                 height: 60px;
                 top: -30px;
-                right: 30px;
+                right: 20px;
                 font-size: 1.5em;
+                border-width: 3px;
+            }
+
+            .close-letter {
+                top: 15px;
+                right: 15px;
+                padding: 8px 20px;
+                font-size: 0.95em;
+            }
+        }
+
+        /* Small mobile phones */
+        @media (max-width: 480px) {
+            body {
+                padding: 15px 5px;
+            }
+
+            .letter-container {
+                padding: 30px 20px;
+                border-radius: 12px;
+            }
+
+            .letter-header {
+                margin-bottom: 25px;
+                padding-bottom: 15px;
+            }
+
+            .letter-date {
+                font-size: 1em;
+            }
+
+            .letter-title {
+                font-size: 1.7em;
+            }
+
+            .letter-subtitle {
+                font-size: 1.1em;
+            }
+
+            .letter-body {
+                font-size: 1em;
+                line-height: 1.7;
+            }
+
+            .letter-body p {
+                margin-bottom: 18px;
+                text-indent: 20px;
+            }
+
+            .salutation {
+                font-size: 1.15em;
+            }
+
+            .choice-mention {
+                padding: 15px;
+                margin: 20px 0;
+                font-size: 0.95em;
+            }
+
+            .divider {
+                font-size: 1.2em;
+                margin: 25px 0;
+            }
+
+            .hearts-decoration {
+                font-size: 1.5em;
+                margin: 20px 0;
+            }
+
+            .letter-signature {
+                margin-top: 30px;
+            }
+
+            .signature-line {
+                font-size: 1.5em;
+            }
+
+            .wax-seal {
+                width: 50px;
+                height: 50px;
+                top: -25px;
+                right: 15px;
+                font-size: 1.2em;
+            }
+
+            .close-letter {
+                top: 10px;
+                right: 10px;
+                padding: 6px 15px;
+                font-size: 0.85em;
+            }
+        }
+
+        /* Very small phones */
+        @media (max-width: 360px) {
+            .letter-container {
+                padding: 25px 15px;
+            }
+
+            .letter-title {
+                font-size: 1.5em;
+            }
+
+            .letter-body {
+                font-size: 0.95em;
+            }
+
+            .letter-body p {
+                text-indent: 15px;
+            }
+        }
+
+        /* Landscape mobile */
+        @media (max-height: 600px) and (orientation: landscape) {
+            body {
+                padding: 20px 10px;
+            }
+
+            .letter-container {
+                padding: 30px 25px;
+                margin: 10px auto;
+            }
+
+            .letter-header {
+                margin-bottom: 20px;
+                padding-bottom: 15px;
+            }
+
+            .letter-title {
+                font-size: 1.8em;
+            }
+
+            .letter-body {
+                font-size: 1em;
+                line-height: 1.6;
+            }
+
+            .letter-body p {
+                margin-bottom: 15px;
+            }
+
+            .wax-seal {
+                width: 45px;
+                height: 45px;
+                top: -20px;
+                font-size: 1.2em;
+            }
+
+            .close-letter {
+                top: 10px;
+                right: 10px;
+                padding: 6px 18px;
+                font-size: 0.9em;
             }
         }
     </style>
@@ -317,7 +578,6 @@
             </p>
 
             <div class="choice-mention" id="choiceSection">
-                <!-- This will be filled dynamically based on her choice -->
                 <p class="no-indent">
                     I remember you chose <span class="highlight" id="choiceText">our perfect moment together</span>. 
                     <span id="choiceMessage">This tells me everything about your beautiful heart...</span>
@@ -346,7 +606,7 @@
 
             <div class="letter-signature">
                 <p class="closing-words">Forever and always yours,</p>
-                <p class="signature-line" id="senderName">Your Love</p>
+                <p class="signature-line" id="senderName">Chris...</p>
                 <p style="font-style: italic; color: #8a7575; margin-top: 15px;">
                     "Distance means so little when someone means so much." 💫
                 </p>
@@ -390,7 +650,7 @@
         // Set current date
         const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         const today = new Date();
-        const dateStr = `${months[today.getMonth()]} ${today.getDate()}${getOrdinalSuffix(today.getDate())}, ${today.getFullYear()}`;
+        const dateStr = months[today.getMonth()] + ' ' + today.getDate() + getOrdinalSuffix(today.getDate()) + ', ' + today.getFullYear();
         document.getElementById('letterDate').textContent = dateStr;
 
         function getOrdinalSuffix(day) {
@@ -402,9 +662,6 @@
                 default: return 'th';
             }
         }
-
-        // EDITABLE: Change your name here!
-        document.getElementById('senderName').textContent = 'Chris...'; // ← EDIT THIS!
 
         // Create twinkling stars
         function createStars() {
@@ -424,7 +681,7 @@
             const container = document.getElementById('floatingHearts');
             const hearts = ['💕', '💖', '💗', '💝', '❤️'];
             
-            setInterval(() => {
+            setInterval(function() {
                 const heart = document.createElement('div');
                 heart.className = 'floating-heart';
                 heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
@@ -433,7 +690,9 @@
                 heart.style.animationDelay = Math.random() * 2 + 's';
                 container.appendChild(heart);
                 
-                setTimeout(() => heart.remove(), 10000);
+                setTimeout(function() {
+                    heart.remove();
+                }, 10000);
             }, 1000);
         }
 
